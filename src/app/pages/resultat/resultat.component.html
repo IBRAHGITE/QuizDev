@@ -1,0 +1,21 @@
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-5 rounded-4 text-center" style="max-width: 500px; width: 100%;">
+    <h2 class="mb-4 text-primary">🎉 Résultats du Quiz</h2>
+
+    <div class="mb-4">
+      <p class="fs-4 mb-1">Vous avez obtenu :</p>
+      <h1 class="display-4 fw-bold text-success">{{ score }} / {{ total }}</h1>
+
+      <p class="mt-3 fs-5 text-muted">
+        {{ message }}
+      </p>
+    </div>
+
+    <button class="btn btn-outline-primary btn-lg mt-3" routerLink="/quiz">
+      🔁 Rejouer le Quiz
+    </button>
+    <button class=" quit btn btn-outline-danger" (click)="quitGame()">
+      Quitter le quizz
+    </button>
+  </div>
+</div>
