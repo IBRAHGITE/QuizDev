@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from '../../models/question.model';
 import { NgClass, NgFor, NgIf } from '@angular/common';
+import { questions } from '../../models/mock-list.component';
 @Component({
   selector: 'app-quiz',
   imports: [NgClass,NgIf,NgFor],
@@ -16,8 +17,10 @@ export class QuizComponent {
   score = 0;
   showFeedback = false;
   isCorrect = false;
-
-  constructor(private router: Router) {}
+  listeQuestions!:Question[];
+  constructor(private router: Router) {
+    this.listeQuestions = questions;
+  }
 
   ngOnInit(): void {
     this.loadQuestions();
@@ -35,80 +38,7 @@ export class QuizComponent {
     .map(({ value }) => value);
 }
   loadQuestions() {
-   const allQuestions: Question[] = [
-      {
-        id:1,
-        question: 'Quel langage est utilisé avec Angular ?',
-        options: ['Java', 'TypeScript', 'Python', 'PHP'],
-        answer: 'TypeScript'
-      },
-      {
-        id:2,
-        question: 'Quel est le framework CSS le plus populaire ?',
-        options: ['Bootstrap', 'Bulma', 'Tailwind', 'Materialize'],
-        answer: 'Bootstrap'
-      },
-      {
-    id: 3,
-    question: 'Quel est le rôle principal de HTML ?',
-    options: ['Styliser les éléments', 'Structurer la page', 'Ajouter des animations', 'Gérer la base de données'],
-    answer: 'Structurer la page'
-  },
-  {
-    id: 4,
-    question: 'Quel langage est exécuté côté client dans le navigateur ?',
-    options: ['Java', 'PHP', 'JavaScript', 'Python'],
-    answer: 'JavaScript'
-  },
-  {
-    id: 5,
-    question: 'Quel framework front-end est basé sur TypeScript ?',
-    options: ['React', 'Angular', 'Vue.js', 'jQuery'],
-    answer: 'Angular'
-  },
-  {
-    id: 6,
-    question: 'Quelle balise HTML est utilisée pour insérer une image ?',
-    options: ['<image>', '<pic>', '<img>', '<src>'],
-    answer: '<img>'
-  },
-  {
-    id: 7,
-    question: 'Quel langage est souvent utilisé pour le back-end avec MySQL ?',
-    options: ['CSS', 'PHP', 'TypeScript', 'HTML'],
-    answer: 'PHP'
-  },
-  {
-    id: 8,
-    question: 'Quel mot-clé est utilisé en JavaScript pour définir une fonction ?',
-    options: ['def', 'function', 'fun', 'define'],
-    answer: 'function'
-  },
-  {
-    id: 9,
-    question: 'Quel framework back-end utilise Express ?',
-    options: ['Laravel', 'Spring', 'Node.js', 'Django'],
-    answer: 'Node.js'
-  },
-  {
-    id: 10,
-    question: 'En CSS, que fait la propriété `display: flex;` ?',
-    options: ['Ajoute une animation', 'Aligne les éléments en colonne ou en ligne', 'Ajoute un effet 3D', 'Crée une image'],
-    answer: 'Aligne les éléments en colonne ou en ligne'
-  },
-  {
-    id: 11,
-    question: 'Quel fichier contient les dépendances d’un projet Node.js ?',
-    options: ['package.json', 'index.js', 'main.js', 'server.js'],
-    answer: 'package.json'
-  },
-  {
-    id: 12,
-    question: 'Quel framework PHP suit le modèle MVC ?',
-    options: ['Laravel', 'jQuery', 'Bootstrap', 'React'],
-    answer: 'Laravel'
-  }
-  ];
+   const allQuestions: Question[] = this.listeQuestions;
    const shuffled = this.shuffleArray(allQuestions);
 
   // Choisis un nombre aléatoire entre 3 et 12
