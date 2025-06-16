@@ -42,7 +42,7 @@ export class QuizComponent {
    const shuffled = this.shuffleArray(allQuestions);
 
   // Choisis un nombre aléatoire entre 3 et 12
-  const count = this.getRandomInt(3, 12);
+  const count = this.getRandomInt(8, 20);
 
   // Coupe le tableau pour ne garder que "count" questions
   this.questions = shuffled.slice(0, count);
